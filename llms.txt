@@ -1,0 +1,26 @@
+# RoboCairn
+
+> Compare paired recorded observations and retain regressions and unresolved dimensions.
+
+- [Quick start](README.md#offline-quick-start): HTTPS clone, venv and local wheel installation.
+- [For AI agents](README.md#for-ai-agents): purpose, minimal Python call and error contract.
+- [Troubleshooting](README.md#common-errors-and-missing-prerequisites): missing prerequisites and recovery.
+- [Request schema](docs/schemas/request.schema.json): suite and optional paired batches.
+- [Response schema](docs/schemas/response.schema.json): result envelope and report.
+- [HTTP interface](openapi.yaml): POST /check on the local service.
+- [Readable guide and evidence limits](docs/README.md): interfaces and comparison evidence.
+- [Security](SECURITY.md): hello@robocairn.com.
+
+Needs Git for checkout; Python 3.10+ with venv/pip for installation. Clone and activate
+a venv using the quick start before this one-line installation from the repository root:
+python -m pip --isolated install --no-index --no-cache-dir --no-deps wheels/robocairn-0.1.0-py3-none-any.whl
+
+Run: robocairn check fixtures.json
+The manual fixture example returns UNKNOWN, exit 3 and five rows with unknown dimensions.
+OK / exit 0 means a valid complete comparison and can still contain regressions.
+ERROR / exit 2 has report=null, error.code and error.message; fix the named cause.
+ARGUMENT_ERROR includes an example and --help; INVALID_INPUT identifies input/file errors.
+HTTP invalid input is 400; oversized bodies 413; wrong media type 415.
+INTERNAL_ERROR gives UNKNOWN with no report (HTTP 500 / CLI 3); do not accept it.
+Python callers receive input/loading exceptions; see the agent instructions before retrying.
+No simulator executes. No robot safety assessment or authenticated provenance is provided.

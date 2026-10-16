@@ -1,0 +1,193 @@
+{
+  "definition": "Predetermined manual fixture oracle; no simulated or physical observations. UNKNOWN never establishes success or safety.",
+  "rows": [
+    {
+      "id": "case-01",
+      "seed": 42001,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 10
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 10
+      },
+      "classification": "UNCHANGED"
+    },
+    {
+      "id": "case-02",
+      "seed": 42002,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 20
+      },
+      "candidate": {
+        "outcome": "FAILURE",
+        "unsafe": "FALSE",
+        "steps": 20
+      },
+      "classification": "REGRESSION"
+    },
+    {
+      "id": "case-03",
+      "seed": 42003,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 30
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "TRUE",
+        "steps": 30
+      },
+      "classification": "REGRESSION"
+    },
+    {
+      "id": "case-04",
+      "seed": 42004,
+      "baseline": {
+        "outcome": "UNKNOWN",
+        "unsafe": "FALSE",
+        "steps": 40
+      },
+      "candidate": {
+        "outcome": "UNKNOWN",
+        "unsafe": "FALSE",
+        "steps": 40
+      },
+      "classification": "UNKNOWN"
+    },
+    {
+      "id": "case-05",
+      "seed": 42005,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "UNKNOWN",
+        "steps": 50
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "UNKNOWN",
+        "steps": 50
+      },
+      "classification": "UNKNOWN"
+    },
+    {
+      "id": "case-06",
+      "seed": 42006,
+      "baseline": {
+        "outcome": "FAILURE",
+        "unsafe": "FALSE",
+        "steps": 60
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 60
+      },
+      "classification": "IMPROVEMENT"
+    },
+    {
+      "id": "case-07",
+      "seed": 42007,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "TRUE",
+        "steps": 70
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 70
+      },
+      "classification": "IMPROVEMENT"
+    },
+    {
+      "id": "case-08",
+      "seed": 42008,
+      "baseline": {
+        "outcome": "FAILURE",
+        "unsafe": "FALSE",
+        "steps": 80
+      },
+      "candidate": {
+        "outcome": "FAILURE",
+        "unsafe": "FALSE",
+        "steps": 80
+      },
+      "classification": "UNCHANGED_FAILURE"
+    },
+    {
+      "id": "case-09",
+      "seed": 42009,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "TRUE",
+        "steps": 90
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "TRUE",
+        "steps": 90
+      },
+      "classification": "UNCHANGED_UNSAFE"
+    },
+    {
+      "id": "case-10",
+      "seed": 42010,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 100
+      },
+      "candidate": {
+        "outcome": "UNKNOWN",
+        "unsafe": "FALSE",
+        "steps": 100
+      },
+      "classification": "UNKNOWN"
+    },
+    {
+      "id": "case-11",
+      "seed": 42011,
+      "baseline": {
+        "outcome": "UNKNOWN",
+        "unsafe": "FALSE",
+        "steps": 110
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 110
+      },
+      "classification": "UNKNOWN"
+    },
+    {
+      "id": "case-12",
+      "seed": 42012,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "UNKNOWN",
+        "steps": 120
+      },
+      "candidate": {
+        "outcome": "FAILURE",
+        "unsafe": "UNKNOWN",
+        "steps": 120
+      },
+      "classification": "REGRESSION"
+    }
+  ],
+  "counts": {
+    "UNCHANGED": 1,
+    "REGRESSION": 3,
+    "UNKNOWN": 4,
+    "IMPROVEMENT": 2,
+    "UNCHANGED_FAILURE": 1,
+    "UNCHANGED_UNSAFE": 1
+  }
+}

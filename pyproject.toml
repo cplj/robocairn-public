@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robocairn"
+version = "0.1.0"
+description = "Local deterministic fixture replay and regression comparison"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+authors = [{name = "RoboCairn Team", email = "hello@robocairn.com"}]
+license = {text = "Apache-2.0"}
+
+[project.scripts]
+robocairn = "robocairn_app:main"
+
+[tool.setuptools]
+py-modules = ["robocairn", "robocairn_app"]

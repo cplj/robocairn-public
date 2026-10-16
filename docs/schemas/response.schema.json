@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RoboCairn check response",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "OK",
+            "UNKNOWN"
+          ]
+        },
+        "report": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "scope": {
+              "$ref": "request.schema.json#/$defs/scope"
+            },
+            "baseline_policy_version": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "candidate_policy_version": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "evidence": {
+              "const": "SCHEMA_REPLAY_CONTRACT_ONLY"
+            },
+            "rows": {
+              "type": "array",
+              "minItems": 10,
+              "maxItems": 20,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4294967295
+                  },
+                  "baseline": {
+                    "$ref": "request.schema.json#/$defs/result"
+                  },
+                  "candidate": {
+                    "$ref": "request.schema.json#/$defs/result"
+                  },
+                  "classification": {
+                    "enum": [
+                      "IMPROVEMENT",
+                      "REGRESSION",
+                      "UNCHANGED",
+                      "UNCHANGED_FAILURE",
+                      "UNCHANGED_UNSAFE",
+                      "UNKNOWN"
+                    ]
+                  },
+                  "unknown_dimensions": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "enum": [
+                        "outcome",
+                        "unsafe"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "id",
+                  "seed",
+                  "baseline",
+                  "candidate",
+                  "classification",
+                  "unknown_dimensions"
+                ]
+              }
+            },
+            "counts": {
+              "type": "object",
+              "propertyNames": {
+                "enum": [
+                  "IMPROVEMENT",
+                  "REGRESSION",
+                  "UNCHANGED",
+                  "UNCHANGED_FAILURE",
+                  "UNCHANGED_UNSAFE",
+                  "UNKNOWN"
+                ]
+              },
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "rows_with_unknown": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 20
+            }
+          },
+          "required": [
+            "scope",
+            "baseline_policy_version",
+            "candidate_policy_version",
+            "evidence",
+            "rows",
+            "counts",
+            "rows_with_unknown"
+          ]
+        },
+        "error": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "status",
+        "report",
+        "error"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "ERROR",
+            "UNKNOWN"
+          ]
+        },
+        "report": {
+          "type": "null"
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "report",
+        "error"
+      ]
+    }
+  ]
+}

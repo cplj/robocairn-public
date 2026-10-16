@@ -1,0 +1,113 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "RoboCairn local API",
+    "version": "0.1.0",
+    "description": "Local trusted use only; no authentication. UNKNOWN does not grant acceptance."
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8765"
+    }
+  ],
+  "paths": {
+    "/check": {
+      "post": {
+        "operationId": "check",
+        "summary": "Compare a suite or matching paired batches",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./docs/schemas/request.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Complete or unresolved comparison; inspect body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./docs/schemas/response.schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON, input or request framing",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./docs/schemas/response.schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown path",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./docs/schemas/response.schema.json"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Unsupported GET request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./docs/schemas/response.schema.json"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Body exceeds 1048576 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./docs/schemas/response.schema.json"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Content type must be application/json",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./docs/schemas/response.schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected internal failure; UNKNOWN without report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./docs/schemas/response.schema.json"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Unsupported HTTP method",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./docs/schemas/response.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

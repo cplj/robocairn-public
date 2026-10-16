@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "environment": {
+    "id": "fixture-only-no-simulator",
+    "version": "1"
+  },
+  "policy": {
+    "id": "recorded-policy",
+    "baseline_version": "baseline-v1",
+    "candidate_version": "candidate-v1"
+  },
+  "source": {
+    "id": "manual-recorded-fixture",
+    "version": "1",
+    "evidence": "SCHEMA_REPLAY_CONTRACT_ONLY"
+  },
+  "fixtures": [
+    {
+      "id": "case-01",
+      "variant": "nominal",
+      "seed": 42001,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 10
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 10
+      }
+    },
+    {
+      "id": "case-02",
+      "variant": "outcome-failure",
+      "seed": 42002,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 20
+      },
+      "candidate": {
+        "outcome": "FAILURE",
+        "unsafe": "FALSE",
+        "steps": 20
+      }
+    },
+    {
+      "id": "case-03",
+      "variant": "unsafe-transition",
+      "seed": 42003,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 30
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "TRUE",
+        "steps": 30
+      }
+    },
+    {
+      "id": "case-04",
+      "variant": "outcome-unobserved",
+      "seed": 42004,
+      "baseline": {
+        "outcome": "UNKNOWN",
+        "unsafe": "FALSE",
+        "steps": 40
+      },
+      "candidate": {
+        "outcome": "UNKNOWN",
+        "unsafe": "FALSE",
+        "steps": 40
+      }
+    },
+    {
+      "id": "case-05",
+      "variant": "safety-unobserved",
+      "seed": 42005,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "UNKNOWN",
+        "steps": 50
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "UNKNOWN",
+        "steps": 50
+      }
+    },
+    {
+      "id": "case-06",
+      "variant": "outcome-recovery",
+      "seed": 42006,
+      "baseline": {
+        "outcome": "FAILURE",
+        "unsafe": "FALSE",
+        "steps": 60
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 60
+      }
+    },
+    {
+      "id": "case-07",
+      "variant": "unsafe-recovery",
+      "seed": 42007,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "TRUE",
+        "steps": 70
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 70
+      }
+    },
+    {
+      "id": "case-08",
+      "variant": "retained-failure",
+      "seed": 42008,
+      "baseline": {
+        "outcome": "FAILURE",
+        "unsafe": "FALSE",
+        "steps": 80
+      },
+      "candidate": {
+        "outcome": "FAILURE",
+        "unsafe": "FALSE",
+        "steps": 80
+      }
+    },
+    {
+      "id": "case-09",
+      "variant": "retained-unsafe",
+      "seed": 42009,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "TRUE",
+        "steps": 90
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "TRUE",
+        "steps": 90
+      }
+    },
+    {
+      "id": "case-10",
+      "variant": "new-outcome-uncertainty",
+      "seed": 42010,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 100
+      },
+      "candidate": {
+        "outcome": "UNKNOWN",
+        "unsafe": "FALSE",
+        "steps": 100
+      }
+    },
+    {
+      "id": "case-11",
+      "variant": "resolved-outcome-uncertainty",
+      "seed": 42011,
+      "baseline": {
+        "outcome": "UNKNOWN",
+        "unsafe": "FALSE",
+        "steps": 110
+      },
+      "candidate": {
+        "outcome": "SUCCESS",
+        "unsafe": "FALSE",
+        "steps": 110
+      }
+    },
+    {
+      "id": "case-12",
+      "variant": "mixed-known-regression",
+      "seed": 42012,
+      "baseline": {
+        "outcome": "SUCCESS",
+        "unsafe": "UNKNOWN",
+        "steps": 120
+      },
+      "candidate": {
+        "outcome": "FAILURE",
+        "unsafe": "UNKNOWN",
+        "steps": 120
+      }
+    }
+  ]
+}

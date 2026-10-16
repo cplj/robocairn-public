@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Local recorded-observation comparison | RoboCairn</title><style>body{font:18px/1.6 system-ui,sans-serif;max-width:58rem;margin:3rem auto;padding:0 1.25rem;color:#172c39;background:#f9fbfc}a{color:#075c9c}code{font-size:.9em}nav{margin-bottom:2rem}h1,h2{line-height:1.2}aside{border-left:4px solid #a55c12;padding:1rem;background:#fff7e9}</style></head><body><main><nav aria-label="Documentation"><a href="comparison/">Comparison report</a> · <a href="../README.md">Quick start</a> · <a href="../llms.txt">For agents</a></nav>
+<h1>RoboCairn</h1><p>Deterministic replay and comparison of paired recorded observations, with explicit unresolved dimensions.</p>
+<h2>Run locally</h2><p>Use Python 3.10 or later. From the repository root in an activated environment:</p><pre><code>python -m pip --isolated install --no-index --no-cache-dir --no-deps wheels/robocairn-0.1.0-py3-none-any.whl
+robocairn check fixtures.json</code></pre>
+<p>The included manual fixtures return UNKNOWN with exit code 3. Inspect the JSON report and all unresolved dimensions. An OK result can still contain regressions.</p>
+<h2>Interfaces</h2><ul><li><a href="schemas/request.schema.json">Input schema</a></li><li><a href="schemas/response.schema.json">Output schema</a></li><li><a href="../openapi.yaml">Local HTTP interface</a>: POST /check, loopback by default</li></ul>
+<aside><strong>Evidence scope</strong><p>Manual fixture replay is a software contract example. It does not execute a simulator or establish physical fidelity, robot safety or real policy performance. Container runtime behavior remains unverified.</p></aside>
+<p><a href="comparison/">Comparison report and claim limits</a> · <a href="../SECURITY.md">Security reporting</a> · <a href="../LICENSE">Apache-2.0</a></p></main></body></html>

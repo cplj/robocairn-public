@@ -1,0 +1,11 @@
+*
+!Dockerfile
+!.dockerignore
+!robocairn.py
+!robocairn_app.py
+!fixtures.json
+!oracle.json
+!README.md
+!pyproject.toml
+!LICENSE
+!NOTICE

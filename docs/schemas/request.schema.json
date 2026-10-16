@@ -1,0 +1,317 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RoboCairn check request",
+  "description": "Additional semantic checks enforce unique identities, matching seeds/scopes, distinct policy versions and exact suite membership. Input limits: 1048576 bytes, 32 container levels, 4096 nodes including keys, 256 collection entries, and 1024 characters per string.",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "suite": {
+          "$ref": "#/$defs/suite"
+        }
+      },
+      "required": [
+        "suite"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "suite": {
+          "$ref": "#/$defs/suite"
+        },
+        "baseline": {
+          "$ref": "#/$defs/batch"
+        },
+        "candidate": {
+          "$ref": "#/$defs/batch"
+        }
+      },
+      "required": [
+        "suite",
+        "baseline",
+        "candidate"
+      ]
+    }
+  ],
+  "$defs": {
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "outcome": {
+          "enum": [
+            "SUCCESS",
+            "FAILURE",
+            "UNKNOWN"
+          ]
+        },
+        "unsafe": {
+          "enum": [
+            "TRUE",
+            "FALSE",
+            "UNKNOWN"
+          ]
+        },
+        "steps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        }
+      },
+      "required": [
+        "outcome",
+        "unsafe",
+        "steps"
+      ]
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "maxLength": 1024
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "maxLength": 1024
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "maxLength": 1024
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "maxLength": 1024
+        },
+        "evidence": {
+          "const": "SCHEMA_REPLAY_CONTRACT_ONLY"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "evidence"
+      ]
+    },
+    "suite": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "environment": {
+          "$ref": "#/$defs/environment"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S",
+              "maxLength": 1024
+            },
+            "baseline_version": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S",
+              "maxLength": 1024
+            },
+            "candidate_version": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S",
+              "maxLength": 1024
+            }
+          },
+          "required": [
+            "id",
+            "baseline_version",
+            "candidate_version"
+          ]
+        },
+        "fixtures": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S",
+                "maxLength": 1024
+              },
+              "variant": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S",
+                "maxLength": 1024
+              },
+              "seed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "baseline": {
+                "$ref": "#/$defs/observation"
+              },
+              "candidate": {
+                "$ref": "#/$defs/observation"
+              }
+            },
+            "required": [
+              "id",
+              "variant",
+              "seed",
+              "baseline",
+              "candidate"
+            ]
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "environment",
+        "source",
+        "policy",
+        "fixtures"
+      ]
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer"
+        },
+        "environment": {
+          "$ref": "#/$defs/environment"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "suite_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "maxLength": 1024
+        },
+        "policy_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "maxLength": 1024
+        }
+      },
+      "required": [
+        "schema_version",
+        "environment",
+        "source",
+        "suite_sha256",
+        "policy_id"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "maxLength": 1024
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "outcome": {
+          "enum": [
+            "SUCCESS",
+            "FAILURE",
+            "UNKNOWN"
+          ]
+        },
+        "unsafe": {
+          "enum": [
+            "TRUE",
+            "FALSE",
+            "UNKNOWN"
+          ]
+        },
+        "steps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        }
+      },
+      "required": [
+        "id",
+        "seed",
+        "outcome",
+        "unsafe",
+        "steps"
+      ]
+    },
+    "batch": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "policy_version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "maxLength": 1024
+        },
+        "results": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 20,
+          "items": {
+            "$ref": "#/$defs/result"
+          }
+        }
+      },
+      "required": [
+        "scope",
+        "policy_version",
+        "results"
+      ]
+    }
+  }
+}
