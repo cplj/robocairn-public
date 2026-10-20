@@ -1,3 +1,5 @@
+> Truquence is the main project. This repository remains the physical module entry point. See [Truquence](https://github.com/cplj/truquence-public) and the existing package instructions below.
+
 # RoboCairn 0.1.0
 
 Compare two versions of recorded robot observations and see regressions and unresolved dimensions in one JSON report.
