@@ -1,4 +1,4 @@
-> Truquence is the main project. This repository remains the physical module entry point. See [Truquence](https://github.com/cplj/truquence-public) and the existing package instructions below.
+> This repository is the physical module entry point for [Truquence](https://github.com/cplj/truquence-public). Install the main package from [PyPI: truquence](https://pypi.org/project/truquence/).
 
 # RoboCairn 0.1.0
 
