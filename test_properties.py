@@ -20,7 +20,7 @@ import robocairn_app as app
 SEED = 20261015
 SAMPLES = 200
 ROOT = Path(__file__).resolve().parent
-ALPHABET = 'abcXYZ012 []{}"\\\n\t\x00é機器🤖'
+ALPHABET = 'abcXYZ012 []{}"\\\n\t\x00é\u6a5f\u5668🤖'
 
 
 def text(rng):
