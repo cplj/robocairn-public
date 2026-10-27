@@ -2,6 +2,8 @@
 
 # RoboCairn 0.1.0
 
+> **Maintenance mode.** This project is not actively developed. Issues and pull requests may not receive a response.
+
 Compare two versions of recorded robot observations and see regressions and unresolved dimensions in one JSON report.
 
 Python 3.10+ with Git and venv/pip is required. The twelve included cases are manual
